@@ -44,6 +44,30 @@ const int dailyPatientCap[] = {
     10
 };
 
+const char *wardName[] = {
+    "",
+    "General Ward",
+    "Paediatric Ward",
+    "Surgical Ward",
+    "ICU"
+};
+
+const float wardRate[] = {
+    0,
+    3000.00,
+    6000.00,
+    12000.00,
+    25000.00
+};
+
+const int wardCapacity[] = {
+    0,
+    20,
+    10,
+    10,
+    5
+};
+
     return 0;
 }
 
