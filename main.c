@@ -160,7 +160,15 @@ float calculateSurcharge(float fee, int urgency)
     + wardCost[count];
 }
 }
+float calculateDiscount(float gross, int age)
+{
+    if(age < 5 || age > 65)
+        return gross * 0.15;
 
+    return 0;
+}
+finalAmount[count] =
+    grossTotal[count] - discount[count];
 
 
     return 0;
