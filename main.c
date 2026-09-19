@@ -98,7 +98,6 @@ float finalAmount[MAX_PATIENTS];
 float waitingTime[MAX_PATIENTS];
 
 int assignedBed[MAX_PATIENTS];
-
 printf("Enter Patient Name: ");
 scanf(" %[^\n]", patientName[count]);
 
@@ -113,6 +112,22 @@ scanf("%d", &selectedSpecialty[count]);
 
 printf("Admitted to Ward? (1-Yes, 0-No): ");
 scanf("%d", &admitted[count]);
+
+if(admitted[count] == 1)
+{
+    printf("Enter Ward ID (1-4): ");
+    scanf("%d", &selectedWard[count]);
+
+    printf("Enter Number of Days: ");
+    scanf("%d", &admissionDays[count]);
+}
+else
+{
+    selectedWard[count] = 0;
+    admissionDays[count] = 0;
+}
+
+
 
     return 0;
 }
