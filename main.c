@@ -99,6 +99,21 @@ float waitingTime[MAX_PATIENTS];
 
 int assignedBed[MAX_PATIENTS];
 
+printf("Enter Patient Name: ");
+scanf(" %[^\n]", patientName[count]);
+
+printf("Enter Age: ");
+scanf("%d", &patientAge[count]);
+
+printf("Enter Urgency Level (1-Normal, 2-Urgent, 3-Critical): ");
+scanf("%d", &urgencyLevel[count]);
+
+printf("Enter Specialty ID (1-4): ");
+scanf("%d", &selectedSpecialty[count]);
+
+printf("Admitted to Ward? (1-Yes, 0-No): ");
+scanf("%d", &admitted[count]);
+
     return 0;
 }
 
