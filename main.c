@@ -126,6 +126,28 @@ else
     selectedWard[count] = 0;
     admissionDays[count] = 0;
 }
+int queueCount[5] = {0};
+float calculateWaitingTime(int specialty, int queueCount[])
+{
+    return queueCount[specialty] * consultationTime[specialty];
+    waitingTime[count] =
+    calculateWaitingTime(selectedSpecialty[count], queueCount);
+
+queueCount[selectedSpecialty[count]]++;
+}
+float calculateSurcharge(float fee, int urgency)
+{
+    if(urgency == 1)
+        return 0;
+
+    else if(urgency == 2)
+        return fee * 0.20;
+
+    else if(urgency == 3)
+        return fee * 0.50;
+
+    return 0;
+}
 
 
 
