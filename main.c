@@ -67,6 +67,37 @@ const int wardCapacity[] = {
     10,
     5
 };
+int bedOccupancy[4][20];
+int i, j;
+
+for(i = 0; i < 4; i++)
+{
+    for(j = 0; j < 20; j++)
+    {
+        bedOccupancy[i][j] = 0;
+    }
+}
+int patientId[MAX_PATIENTS];
+char patientName[MAX_PATIENTS][50];
+int patientAge[MAX_PATIENTS];
+int urgencyLevel[MAX_PATIENTS];
+
+int selectedSpecialty[MAX_PATIENTS];
+
+int admitted[MAX_PATIENTS];
+int selectedWard[MAX_PATIENTS];
+int admissionDays[MAX_PATIENTS];
+
+float baseFee[MAX_PATIENTS];
+float surcharge[MAX_PATIENTS];
+float wardCost[MAX_PATIENTS];
+float grossTotal[MAX_PATIENTS];
+float discount[MAX_PATIENTS];
+float finalAmount[MAX_PATIENTS];
+
+float waitingTime[MAX_PATIENTS];
+
+int assignedBed[MAX_PATIENTS];
 
     return 0;
 }
