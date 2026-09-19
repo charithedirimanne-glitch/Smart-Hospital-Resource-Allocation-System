@@ -147,6 +147,18 @@ float calculateSurcharge(float fee, int urgency)
         return fee * 0.50;
 
     return 0;
+
+    float calculateWardCost(int ward, int days)
+{
+    if(ward == 0)
+        return 0;
+
+    return wardRate[ward] * days;
+    grossTotal[count] =
+    baseFee[count]
+    + surcharge[count]
+    + wardCost[count];
+}
 }
 
 
