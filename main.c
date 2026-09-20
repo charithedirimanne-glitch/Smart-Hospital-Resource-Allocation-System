@@ -379,6 +379,31 @@ do
 
 } while(choice != 6);
 }
+void saveBeds()
+{
+    FILE *fp;
+    int i, j;
+
+    fp = fopen("beds_status.txt", "w");
+
+    if(fp == NULL)
+    {
+        printf("File error!\n");
+        return;
+    }
+
+    for(i = 0; i < 4; i++)
+    {
+        for(j = 0; j < wardCapacity[i + 1]; j++)
+        {
+            fprintf(fp, "%d ", bedOccupancy[i][j]);
+        }
+
+        fprintf(fp, "\n");
+    }
+
+    fclose(fp);
+}
 
 
 
