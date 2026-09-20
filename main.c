@@ -186,6 +186,65 @@ finalAmount[count] =
     return -1;
 }
 
+void displayBill(int i)
+{
+    printf("\n============================================\n");
+    printf("       SMART HOSPITAL ADMISSION & BILL\n");
+    printf("============================================\n");
+
+    printf("Patient ID       : PAT-%04d\n", patientId[i]);
+    printf("Patient Name     : %s\n", patientName[i]);
+    printf("Age              : %d\n", patientAge[i]);
+
+    printf("Specialty        : %s\n",
+           specialtyName[selectedSpecialty[i]]);
+
+    if(admitted[i] == 1)
+    {
+        printf("Assigned Ward    : %s\n",
+               wardName[selectedWard[i]]);
+
+        printf("Bed Number       : %d\n",
+               assignedBed[i]);
+    }
+    else
+    {
+        printf("Assigned Ward    : OPD\n");
+    }
+
+    printf("Urgency Level    : Level %d\n",
+           urgencyLevel[i]);
+
+    printf("--------------------------------------------\n");
+
+    printf("Base Consultation Fee : LKR %.2f\n",
+           baseFee[i]);
+
+    printf("Emergency Surcharge   : LKR %.2f\n",
+           surcharge[i]);
+
+    printf("Ward Stay Cost        : LKR %.2f\n",
+           wardCost[i]);
+
+    printf("--------------------------------------------\n");
+
+    printf("Gross Total Bill      : LKR %.2f\n",
+           grossTotal[i]);
+
+    printf("Age Subsidy Discount  : LKR %.2f\n",
+           discount[i]);
+
+    printf("--------------------------------------------\n");
+
+    printf("Final Payable Amount  : LKR %.2f\n",
+           finalAmount[i]);
+
+    printf("Estimated Waiting Time: %.2f mins\n",
+           waitingTime[i]);
+
+    printf("============================================\n");
+}
+
 
     return 0;
 }
