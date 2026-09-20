@@ -262,6 +262,25 @@ void sortPatients(int n, int order[])
         }
     }
 }
+void displayPriorityList(int n)
+{
+    int order[MAX_PATIENTS];
+    int i;
+
+    for(i = 0; i < n; i++)
+        order[i] = i;
+
+    sortPatients(n, order);
+
+    printf("\n===== PATIENT PRIORITY LIST =====\n");
+
+    for(i = 0; i < n; i++)
+    {
+        printf("%s - Level %d\n",
+               patientName[order[i]],
+               urgencyLevel[order[i]]);
+    }
+}
 
 
     return 0;
