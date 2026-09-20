@@ -304,6 +304,18 @@ for(i = 0; i < count; i++)
     revenue += finalAmount[i];
     totalDiscount += discount[i];
 }
+int highest = 0;
+
+for(i = 1; i < count; i++)
+{
+    if(finalAmount[i] > finalAmount[highest])
+        highest = i;
+}
+printf("Highest Paying Patient: %s\n",
+       patientName[highest]);
+
+printf("Bill: LKR %.2f\n",
+       finalAmount[highest]);
 
 
     return 0;
