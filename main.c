@@ -316,6 +316,21 @@ printf("Highest Paying Patient: %s\n",
 
 printf("Bill: LKR %.2f\n",
        finalAmount[highest]);
+       for(i = 0; i < 4; i++)
+{
+    int occupied = 0;
+
+    for(j = 0; j < wardCapacity[i + 1]; j++)
+    {
+        if(bedOccupancy[i][j] == 1)
+            occupied++;
+    }
+
+    printf("%s : %.2f%%\n",
+           wardName[i + 1],
+           ((float)occupied / wardCapacity[i + 1]) * 100);
+}
+
 
 
     return 0;
