@@ -281,6 +281,29 @@ void displayPriorityList(int n)
                urgencyLevel[order[i]]);
     }
 }
+int normal = 0;
+int urgent = 0;
+int critical = 0;
+
+for(i = 0; i < count; i++)
+{
+    if(urgencyLevel[i] == 1)
+        normal++;
+
+    else if(urgencyLevel[i] == 2)
+        urgent++;
+
+    else if(urgencyLevel[i] == 3)
+        critical++;
+}
+float revenue = 0;
+float totalDiscount = 0;
+
+for(i = 0; i < count; i++)
+{
+    revenue += finalAmount[i];
+    totalDiscount += discount[i];
+}
 
 
     return 0;
