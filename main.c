@@ -329,6 +329,55 @@ printf("Bill: LKR %.2f\n",
     printf("%s : %.2f%%\n",
            wardName[i + 1],
            ((float)occupied / wardCapacity[i + 1]) * 100);
+           int choice;
+
+do
+{
+    printf("\n==============================\n");
+    printf("      SMART HOSPITAL\n");
+    printf("==============================\n");
+
+    printf("1. Register Patient\n");
+    printf("2. Display Patient Bill\n");
+    printf("3. Display Priority Patients\n");
+    printf("4. Generate Reports\n");
+    printf("5. Display Bed Status\n");
+    printf("6. Exit\n");
+
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    switch(choice)
+    {
+        case 1:
+
+            break;
+
+        case 2:
+
+            break;
+
+        case 3:
+
+            break;
+
+        case 4:
+
+            break;
+
+        case 5:
+
+            break;
+
+        case 6:
+            printf("Thank you!\n");
+            break;
+
+        default:
+            printf("Invalid choice!\n");
+    }
+
+} while(choice != 6);
 }
 
 
