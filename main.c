@@ -244,6 +244,24 @@ void displayBill(int i)
 
     printf("============================================\n");
 }
+void sortPatients(int n, int order[])
+{
+    int i, j, temp;
+
+    for(i = 0; i < n - 1; i++)
+    {
+        for(j = i + 1; j < n; j++)
+        {
+            if(urgencyLevel[order[j]] >
+               urgencyLevel[order[i]])
+            {
+                temp = order[i];
+                order[i] = order[j];
+                order[j] = temp;
+            }
+        }
+    }
+}
 
 
     return 0;
