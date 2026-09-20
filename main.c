@@ -404,6 +404,27 @@ void saveBeds()
 
     fclose(fp);
 }
+void savePatientRecord(int i)
+{
+    FILE *fp;
+
+    fp = fopen("patient_records.txt", "a");
+
+    if(fp == NULL)
+    {
+        printf("File error!\n");
+        return;
+    }
+
+    fprintf(fp,
+            "%s,%s,%d,%.2f\n",
+            patientName[i],
+            specialtyName[selectedSpecialty[i]],
+            patientAge[i],
+            finalAmount[i]);
+
+    fclose(fp);
+}
 
 
 
