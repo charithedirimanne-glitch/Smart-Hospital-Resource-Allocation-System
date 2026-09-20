@@ -170,6 +170,22 @@ float calculateDiscount(float gross, int age)
 finalAmount[count] =
     grossTotal[count] - discount[count];
 
+    int allocateBed(int ward, int bedOccupancy[][20])
+{
+    int j;
+
+    for(j = 0; j < wardCapacity[ward]; j++)
+    {
+        if(bedOccupancy[ward - 1][j] == 0)
+        {
+            bedOccupancy[ward - 1][j] = 1;
+            return j + 1;
+        }
+    }
+
+    return -1;
+}
+
 
     return 0;
 }
