@@ -170,6 +170,263 @@ float calculateDiscount(float gross, int age)
 finalAmount[count] =
     grossTotal[count] - discount[count];
 
+    int allocateBed(int ward, int bedOccupancy[][20])
+{
+    int j;
+
+    for(j = 0; j < wardCapacity[ward]; j++)
+    {
+        if(bedOccupancy[ward - 1][j] == 0)
+        {
+            bedOccupancy[ward - 1][j] = 1;
+            return j + 1;
+        }
+    }
+
+    return -1;
+}
+
+void displayBill(int i)
+{
+    printf("\n============================================\n");
+    printf("       SMART HOSPITAL ADMISSION & BILL\n");
+    printf("============================================\n");
+
+    printf("Patient ID       : PAT-%04d\n", patientId[i]);
+    printf("Patient Name     : %s\n", patientName[i]);
+    printf("Age              : %d\n", patientAge[i]);
+
+    printf("Specialty        : %s\n",
+           specialtyName[selectedSpecialty[i]]);
+
+    if(admitted[i] == 1)
+    {
+        printf("Assigned Ward    : %s\n",
+               wardName[selectedWard[i]]);
+
+        printf("Bed Number       : %d\n",
+               assignedBed[i]);
+    }
+    else
+    {
+        printf("Assigned Ward    : OPD\n");
+    }
+
+    printf("Urgency Level    : Level %d\n",
+           urgencyLevel[i]);
+
+    printf("--------------------------------------------\n");
+
+    printf("Base Consultation Fee : LKR %.2f\n",
+           baseFee[i]);
+
+    printf("Emergency Surcharge   : LKR %.2f\n",
+           surcharge[i]);
+
+    printf("Ward Stay Cost        : LKR %.2f\n",
+           wardCost[i]);
+
+    printf("--------------------------------------------\n");
+
+    printf("Gross Total Bill      : LKR %.2f\n",
+           grossTotal[i]);
+
+    printf("Age Subsidy Discount  : LKR %.2f\n",
+           discount[i]);
+
+    printf("--------------------------------------------\n");
+
+    printf("Final Payable Amount  : LKR %.2f\n",
+           finalAmount[i]);
+
+    printf("Estimated Waiting Time: %.2f mins\n",
+           waitingTime[i]);
+
+    printf("============================================\n");
+}
+void sortPatients(int n, int order[])
+{
+    int i, j, temp;
+
+    for(i = 0; i < n - 1; i++)
+    {
+        for(j = i + 1; j < n; j++)
+        {
+            if(urgencyLevel[order[j]] >
+               urgencyLevel[order[i]])
+            {
+                temp = order[i];
+                order[i] = order[j];
+                order[j] = temp;
+            }
+        }
+    }
+}
+void displayPriorityList(int n)
+{
+    int order[MAX_PATIENTS];
+    int i;
+
+    for(i = 0; i < n; i++)
+        order[i] = i;
+
+    sortPatients(n, order);
+
+    printf("\n===== PATIENT PRIORITY LIST =====\n");
+
+    for(i = 0; i < n; i++)
+    {
+        printf("%s - Level %d\n",
+               patientName[order[i]],
+               urgencyLevel[order[i]]);
+    }
+}
+int normal = 0;
+int urgent = 0;
+int critical = 0;
+
+for(i = 0; i < count; i++)
+{
+    if(urgencyLevel[i] == 1)
+        normal++;
+
+    else if(urgencyLevel[i] == 2)
+        urgent++;
+
+    else if(urgencyLevel[i] == 3)
+        critical++;
+}
+float revenue = 0;
+float totalDiscount = 0;
+
+for(i = 0; i < count; i++)
+{
+    revenue += finalAmount[i];
+    totalDiscount += discount[i];
+}
+int highest = 0;
+
+for(i = 1; i < count; i++)
+{
+    if(finalAmount[i] > finalAmount[highest])
+        highest = i;
+}
+printf("Highest Paying Patient: %s\n",
+       patientName[highest]);
+
+printf("Bill: LKR %.2f\n",
+       finalAmount[highest]);
+       for(i = 0; i < 4; i++)
+{
+    int occupied = 0;
+
+    for(j = 0; j < wardCapacity[i + 1]; j++)
+    {
+        if(bedOccupancy[i][j] == 1)
+            occupied++;
+    }
+
+    printf("%s : %.2f%%\n",
+           wardName[i + 1],
+           ((float)occupied / wardCapacity[i + 1]) * 100);
+           int choice;
+
+do
+{
+    printf("\n==============================\n");
+    printf("      SMART HOSPITAL\n");
+    printf("==============================\n");
+
+    printf("1. Register Patient\n");
+    printf("2. Display Patient Bill\n");
+    printf("3. Display Priority Patients\n");
+    printf("4. Generate Reports\n");
+    printf("5. Display Bed Status\n");
+    printf("6. Exit\n");
+
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    switch(choice)
+    {
+        case 1:
+
+            break;
+
+        case 2:
+
+            break;
+
+        case 3:
+
+            break;
+
+        case 4:
+
+            break;
+
+        case 5:
+
+            break;
+
+        case 6:
+            printf("Thank you!\n");
+            break;
+
+        default:
+            printf("Invalid choice!\n");
+    }
+
+} while(choice != 6);
+}
+void saveBeds()
+{
+    FILE *fp;
+    int i, j;
+
+    fp = fopen("beds_status.txt", "w");
+
+    if(fp == NULL)
+    {
+        printf("File error!\n");
+        return;
+    }
+
+    for(i = 0; i < 4; i++)
+    {
+        for(j = 0; j < wardCapacity[i + 1]; j++)
+        {
+            fprintf(fp, "%d ", bedOccupancy[i][j]);
+        }
+
+        fprintf(fp, "\n");
+    }
+
+    fclose(fp);
+}
+void savePatientRecord(int i)
+{
+    FILE *fp;
+
+    fp = fopen("patient_records.txt", "a");
+
+    if(fp == NULL)
+    {
+        printf("File error!\n");
+        return;
+    }
+
+    fprintf(fp,
+            "%s,%s,%d,%.2f\n",
+            patientName[i],
+            specialtyName[selectedSpecialty[i]],
+            patientAge[i],
+            finalAmount[i]);
+
+    fclose(fp);
+}
+
+
 
     return 0;
 }
